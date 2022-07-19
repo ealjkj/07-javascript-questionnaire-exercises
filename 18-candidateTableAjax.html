@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Table</title>
+    <script src="18-candidateTableAjax.js" defer></script>
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            }
+
+        td, th {
+            border: 1px solid #eee;
+            text-align: left;
+            padding: 10px;
+        }
+
+        tr:nth-child(2n) {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <template id="table-header">
+        <tr>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th><a href="#" id="add-link"> #Add </a></th>
+        </tr>
+    </template>
+    <template id="add-form-template">
+        <tr id="add-form">
+            <th><input type="text" id="first-name"></th>
+            <th><input type="text" id="last-name"></th>
+            <th><input type="tel" id="phone"></th>
+            <th><label for="submit"></label> <input type="submit" value="Click to Add" id="submit-btn"></th>
+        </tr>
+    </template>
+
+    <template id="person-row">
+        <tr>
+            <td class="first-name"><input type="text" ></td>
+            <td class="last-name"><input type="text" ></td>
+            <td class="phone"><input type="tel" ></td>
+            <td class="buttons"> 
+                <button class="edit-btn">Edit</button> 
+                <button  class="delete-btn">Delete</button>
+            </td>
+        </tr>
+    </template>
+
+    <template id="save-cancel-cell">
+        <td class="buttons">
+            <button class="save-btn">Save</button> 
+            <button  class="cancel-btn">Cancel</button>
+        </td>
+    </template>
+</body>
+</html>

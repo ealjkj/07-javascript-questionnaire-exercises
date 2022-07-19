@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="35-sortableTable.js" defer></script>
+    <style>
+        
+
+        tr:first-child td:nth-child(2):hover {
+            cursor: pointer;
+            background-color: aquamarine;
+        }
+
+        tr:first-child td:nth-child(2)::after {
+            content: '   \2195';
+        }
+
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Age</td>
+        </tr>
+        <tr>
+            <td>Sam</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>34</td>
+        </tr>
+        <tr>
+            <td>Tim</td>
+            <td>28</td>
+        </tr>
+    </table>
+    
+</body>
+</html>

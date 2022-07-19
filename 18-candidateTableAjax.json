@@ -1,0 +1,10 @@
+{
+    "people": [
+        {
+            "_id": 1,
+            "name": "John",
+            "lastName": "Galt",
+            "phone": "123-456-7890"
+        }
+    ]
+}
