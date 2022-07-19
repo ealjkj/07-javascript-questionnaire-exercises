@@ -1,5 +1,10 @@
-// Chess move verifier:
-// For more info check 38-myOwnDesign.txt
+// chess FEN Loader
+
+// FEN stands for Forsyth-Edwards Notation. I want to be able to see a chess board with the pieces by just loading a FEN string.
+
+// In order to do that I decided to create a Board class where I was gonna have a method called loadFEN, that will store information about the position.
+
+// I also need a display method that will take the information and log it as a table.
 
 class Board {
     constructor(fen = "8/8/8/8/8/8/8/8 w - - 0 1") {
@@ -38,24 +43,13 @@ class Board {
         this.halfMoveClock = Number(fenParts[4]);
         this.fullMoveNumber = Number(fenParts[5]);
     }
-}
 
-class Piece {
-    constructor(square) {
-        this.square = square;
-    }
-}
-
-class Pawn extends Piece {
-    legalMoves() {
-
-    }
-    legalCaptures() {
-        
+    display() {
+        console.table(this.squares)
     }
 }
 
 
 // 
 const board = new Board("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
-console.table(board.squares);
+board.display();
