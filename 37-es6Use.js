@@ -9,7 +9,7 @@ console.log("hello world".exclamation());
 // ----------------------
 
 const add = (...args) => {
-    return args.reduce((a,b) => a+b);
+    return args.reduce((a,b) => a+b, 0);
 }
 
 console.log(add(2, 5) == 7);

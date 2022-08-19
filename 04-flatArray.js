@@ -1,14 +1,19 @@
-function flat(array) {
-    if (array.length === 0) return [];
-    if (array.length === 1) {
-        if(Array.isArray(array[0])) return flat(array[0]);
-        else return array;
-    } 
-    else {
-        return [...flat([array[0]]), ...flat(array.slice(1, array.length))];
-    }
-}
+function flat(toFlat) {
+    const flatten = [];
 
+    function appendAll(arr) {
+        if(!Array.isArray(arr)) {
+            return flatten.push(arr)
+        } 
+
+        for(let element of arr) {
+            appendAll(element)
+        }
+    }
+
+    appendAll(toFlat);
+    return flatten
+}
 console.log(flat([]));
 console.log(flat([4]));
 console.log(flat([[1]]));

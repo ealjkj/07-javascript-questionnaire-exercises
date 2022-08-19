@@ -4,11 +4,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="31-onlyOneVisible.js"></script>
+    <script src="31-onlyOneVisible.js" defer></script>
 
     <style>
         p:nth-child(odd) {
             cursor: pointer;
+        }
+        p:nth-child(even) {
+            visibility: hidden;
         }
     </style>
 </head>

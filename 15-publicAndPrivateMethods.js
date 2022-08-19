@@ -1,9 +1,10 @@
 var foo = (function () { 
     function private () {
-        console.log("you can't access this function");
+        console.log("This method can't be called by outher functions");
     }
 
     function bar() {
+        private()
         console.log('bar!');
     }
 

@@ -1,22 +1,12 @@
-const styleElement = document.createElement('style');
+const elementsForToggle = document.querySelectorAll('p:nth-child(odd)')
+const elementsToToggle = document.querySelectorAll('p:nth-child(even)')
 
-// This will happen before the DOM even start loading
-document.head.appendChild(styleElement);
-styleElement.appendChild(document.createTextNode(`
-p:nth-child(even) {
-    visibility: hidden;
-}
-`));
+document.body.addEventListener('click', e => {
+    const btn = e.target.closest('p:nth-child(odd)');
 
-// This will happen after
-addEventListener('DOMContentLoaded', e => {
-    const elementsForToggle = document.querySelectorAll('p:nth-child(odd)')
-    const elementsToToggle = document.querySelectorAll('p:nth-child(even)')
-    elementsForToggle.forEach((element, key) => {
-        elementsForToggle[key].addEventListener('click', e => {
-            for(let i = 0; i < elementsToToggle.length; i++){
-                elementsToToggle[i].style.visibility = (key === i) ? 'visible': 'hidden';
-            }
-        });    
-    })
+    if(btn) {
+        let newState = btn.nextElementSibling.style.visibility === 'visible' ? 'hidden' : 'visible';
+        elementsToToggle.forEach(element => {element.style.visibility = 'hidden'});
+        btn.nextElementSibling.style.visibility = newState;
+    }
 })

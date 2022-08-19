@@ -6,6 +6,10 @@
 
 // I also need a display method that will take the information and log it as a table.
 
+
+class Position {
+    constructor()
+}
 class Board {
     constructor(fen = "8/8/8/8/8/8/8/8 w - - 0 1") {
         this.fen = fen;

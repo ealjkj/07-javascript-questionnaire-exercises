@@ -26,8 +26,6 @@ class Medic extends Person {
 // I don't really know if this is a proper AJAX request
 const person = new Person('Ash', 'Ketchup');
 console.log(person.fullName());
-person.makeGetRequest('.', function getCb(request) {
-    return ()=> {
-        console.log(request.responseText);
-    }
-});
+
+// makeGetRequest will return a promise
+person.makeGetRequest().then(value => value.json()).then(console.log);

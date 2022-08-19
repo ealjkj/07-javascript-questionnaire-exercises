@@ -17,7 +17,6 @@ function moveLeftAnimation(item, pixels, duration = 1) {
     }, 1000/fps)
 }
 
-
-
+item.addEventListener('click', e => moveLeftAnimation(item, 60, 0.3));
 
 

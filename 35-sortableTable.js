@@ -27,11 +27,7 @@ ageCell.addEventListener('click', function orderTable(e) {
     }
 
     const fragment = new DocumentFragment();
-    // remove elements
-    rows.forEach(value => {
-        tbody.removeChild(value);
-    });
-
+    
     // sort array and save in memo;
     if(memo[currentOrder]) sortedIndexes = memo[currentOrder];
     else {

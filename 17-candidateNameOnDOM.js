@@ -10,8 +10,10 @@ var candidate = {
 }
 
 // -------------- workflow ----------------------
+// I could just use an ID, but in order to not modify the markup, I will use querySelector.
 
-const secondInfo = document.getElementsByClassName('info')[1];
+const main = document.getElementById('body');
+const secondInfo = main.querySelector('.info');
 
 // FIRST NAME
 secondInfo.firstChild.textContent = candidate.name.firstname; 

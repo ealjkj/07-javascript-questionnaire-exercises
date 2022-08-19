@@ -1,4 +1,4 @@
-let v = document.getElementById('validation-input').value;
+let savedValue = document.getElementById('validation-input').value;
 const keyboardLayout = [
     [["`", "~"], ["1", "!"], ["2", "@"], ["3", "#"], ["4", "$"], ["5", "%"], ["6", "^"], ["7", "&"], ["8", "*"], ["9", "("], ["0", ")"], ["-", "_"], ["=", "+"]],
     [..."QWERTYUIOP".split("").map(v => [v]), ["[", "{"], ["]", "}"], ["\\", "|"]],
@@ -17,29 +17,36 @@ for(let i = 0; i < keyboardLayout.length; i++) {
 }
 
 const validationInput = document.getElementById('validation-input');
-validationInput.addEventListener('keyup', ({target}) => {
+validationInput.addEventListener('input', ({target}) => {
     if(containsConsecutiveCharacters(target.value)) {
-        target.value = v;
+        target.value = savedValue;
     }
-    v = target.value;
+    savedValue = target.value;
 });
 
 
 function containsConsecutiveCharacters(str) {
     return str.split("").some((value, index, arr) => {
+        // get 4 characters from the input
         const test = [a,b,c,d] = arr.slice(index, index + 4).map(v => v.toUpperCase());
 
-        // Check if all characters are in layout
-        if(indexes[a] === undefined || indexes[b] === undefined || indexes[c] === undefined || indexes[d] === undefined) return false;
+        let inputHasFourConsecutive = false;
+        for(let line of keyboardLayout) {
+            const lineHasFourConsecutive = line.some((value, keyIndex) => {
+                if(!line[keyIndex + 3]) {
+                    return false
+                } 
 
-        // Verify they all belong to the same line on the keyboard
-        const keyPositions = test.map(v => indexes[v]);
-        const sameLine = keyPositions.reduce((current,[line, i]) => current && line === keyPositions[0][0], true);
+                return line[keyIndex].includes(a) 
+                && line[keyIndex + 1].includes(b) 
+                && line[keyIndex + 2].includes(c) 
+                && line[keyIndex + 3].includes(d)
+            })
 
-        // check if they are consecutives
-        const minIndex = Math.min(...keyPositions.map(([l, index]) => index));
-        const testString = keyPositions.map(([l, index]) => index-minIndex).reduce((current, v) => current + v.toString(), "");
+            // Input will have Four consecutive characters on the keyboard if one of the lines contains four consecutive characters.
+            inputHasFourConsecutive = inputHasFourConsecutive || lineHasFourConsecutive;
+        }
 
-        return sameLine && (testString === "0123" || testString === "3210");
+        return inputHasFourConsecutive;
     });
 }

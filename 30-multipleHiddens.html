@@ -4,11 +4,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mulitple hidden elements</title>
-    <script src="30-multipleHiddens.js"></script>
+    <script src="30-multipleHiddens.js" defer></script>
 
     <style>
         p:nth-child(odd) {
             cursor: pointer;
+        }
+
+        p:nth-child(even) {
+           visibility: hidden;
         }
     </style>
 </head>
