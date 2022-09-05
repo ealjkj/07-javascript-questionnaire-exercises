@@ -5,7 +5,11 @@ var async = {
             promises.push(fetch(url));
         }
 
-        Promise.all(promises).then(callback);
+        Promise.allSettled(promises).then(values  => {
+            const fullfilledValues = values.filter(({status}) => status === "fulfilled");
+            const context = fullfilledValues.map(({value}) => value);
+            callback.call(context);
+        });
     }
 }
 
